@@ -178,7 +178,7 @@ function setup()
 	sliderW.position(10,10);
 	sliderH.position(10,40);
 	
-	slider_shader=createSlider(-1000,1000,0);
+	slider_shader=createSlider(-1200,-600,-800);
 	slider_shader.position(10,70);
 }
 
