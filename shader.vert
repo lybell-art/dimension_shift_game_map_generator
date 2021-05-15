@@ -5,11 +5,9 @@ uniform mat4 uProjectionMatrix;
 uniform mat4 uModelViewMatrix;
 
 varying vec2 vTexCoord;
-varying vec3 vNormal;
 
 void main() {
 	vec4 positionVec4 = vec4(aPosition, 1.0);
-	vNormal = aNormal;
 	gl_Position = uProjectionMatrix * uModelViewMatrix * positionVec4;
 	vTexCoord = aTexCoord;
 }
