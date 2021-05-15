@@ -132,8 +132,10 @@ class cubeSpace
 						case 2:fill(0,255,0); break;
 						case 3:fill(255,255,0); break;
 					}
+					push();
 					translate(this.cellWidth * x - this.width / 2, this.cellWidth * y - this.height / 2, this.cellWidth * z - this.width / 2);
 					box(this.cellWidth);
+					pop();
 				}
 			}
 		}
@@ -153,7 +155,7 @@ function drawCursor(cur)
 function setup()
 {
 	createCanvas(windowWidth,windowHeight,WEBGL);
-	ortho(-width/2, width/2, height/2, -height/2, 0, 2000);
+	ortho(-width/2, width/2, height/2, -height/2, -2000, 2000);
 	map=new cubeSpace();
 	sliderW=createSlider(3,10,8);
 	sliderH=createSlider(3,10,8);
