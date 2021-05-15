@@ -156,7 +156,7 @@ function drawCursor(cur)
 	strokeWeight(5);
 	noFill();
 	translate(0,0,900);
-	rect(cur[0] * w, cur[1] * w, w, w);
+	rect(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2), w, w);
 	pop();
 }
 
