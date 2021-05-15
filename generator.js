@@ -23,6 +23,8 @@ class cubeSpace
 		this.r = 0;
 		this.nextFace= 0;
 		this.rotateDir = 0;
+		this._startPoint = [0,0,0];
+		this._endPoint = [7,7,0];
 		this.reset();
 	}
 	get width()
@@ -49,6 +51,20 @@ class cubeSpace
 	{
 		return this.width/2;
 	}
+	set startPoint(pos)
+	{
+		let x=pos[0], y=pos[1], z=pos[2];
+		this.cell[x][y][z] = 2;
+		this.cell[this._startPoint[0]][this._startPoint[1]][this._startPoint[2]] = 0;
+		this._startPoint=[x,y,z];
+	}
+	set endPoint(pos)
+	{
+		let x=pos[0], y=pos[1], z=pos[2];
+		this.cell[x][y][z] = 3;
+		this.cell[this.endPoint[0]][this.endPoint[1]][this.endPoint[2]] = 0;
+		this.endPoint=[x,y,z];
+	}
 	reset()
 	{
 		for(let x=0; x<10; x++)
@@ -63,8 +79,8 @@ class cubeSpace
 				}
 			}
 		}
-		this.cells[0][0][0]=2;
-		this.cells[7][7][7]=3;
+		this.startPoint=[0,0,0];
+		this.endPoint=[7,7,0];
 	}
 	rotate(direction)
 	{
@@ -116,7 +132,8 @@ class cubeSpace
 				let bottom=this.cells[x][_y+1][z];
 				if(bottom != 0 && !this.isStartEndPoint(bottom))
 				{
-					this.cells[x][_y][z] = mode;
+					if(mode == 2) this.startPoint=[x,_y,z];
+					else this.endPoint=[x,_y,z];
 					sePoint=true;
 					break;
 				}
@@ -124,7 +141,11 @@ class cubeSpace
 			if(this.face % 2 == 0) z+=dir;
 			else x+=dir;
 		}
-		if(!sePoint && this.isStartEndPoint(mode)) this.cells[xx][_y][zz] = mode;
+		if(!sePoint && this.isStartEndPoint(mode))
+		{
+			if(mode == 2) this.startPoint=[xx,_y,zz];
+			else this.endPoint=[xx,_y,zz];
+		}
 		return true;
 	}
 	render()
