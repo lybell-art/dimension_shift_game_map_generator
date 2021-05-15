@@ -59,10 +59,12 @@ class cubeSpace
 				this.cells[x].push([]);
 				for(let z=0;z<10;z++)
 				{
-					this.cells[x][y].push(z%3 + 1);
+					this.cells[x][y].push(0);
 				}
 			}
 		}
+		this.cells[0][0][0]=2;
+		this.cells[7][7][7]=3;
 	}
 	rotate(direction)
 	{
