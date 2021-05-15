@@ -62,8 +62,8 @@ class cubeSpace
 	{
 		let x=pos[0], y=pos[1], z=pos[2];
 		this.cells[x][y][z] = 3;
-		this.cells[this.endPoint[0]][this.endPoint[1]][this.endPoint[2]] = 0;
-		this.endPoint=[x,y,z];
+		this.cells[this._endPoint[0]][this._endPoint[1]][this._endPoint[2]] = 0;
+		this._endPoint=[x,y,z];
 	}
 	reset()
 	{
