@@ -9,7 +9,8 @@ varying vec3 objPos;
 
 void main() {
 	vec4 positionVec4 = vec4(aPosition, 1.0);
-	gl_Position = uProjectionMatrix * uModelViewMatrix * positionVec4;
+	vec4 modelViewVec = uModelViewMatrix * positionVec4;
+	gl_Position = uProjectionMatrix * modelViewVec;
 	vTexCoord = aTexCoord;
-	objPos = gl_Position.xyz;
+	objPos = modelViewVec.xyz;
 }
