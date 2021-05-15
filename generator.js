@@ -1,4 +1,4 @@
-let map, sliderW, sliderH;
+let map, sliderW, sliderH, slider_shader;
 let mode=1, myShader;
 
 function cycle(n, p, c)
@@ -177,11 +177,15 @@ function setup()
 	sliderH=createSlider(3,10,8);
 	sliderW.position(10,10);
 	sliderH.position(10,40);
+	
+	slider_shader=createSlider(-2000,2000,0);
+	slider_shader.position(10,70);
 }
 
 function draw()
 {
 	background(220);
+	myShader.setUniform("base", slider_shader.value() * 1.0);
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
