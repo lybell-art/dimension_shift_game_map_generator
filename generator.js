@@ -133,7 +133,9 @@ class cubeSpace
 						case 3:fill(255,255,0); break;
 					}
 					push();
-					translate(this.cellWidth * x - this.width / 2, this.cellWidth * y - this.height / 2, this.cellWidth * z - this.width / 2);
+					translate(this.cellWidth * x - this.width / 2 + this.cellWidth/2, 
+						  this.cellWidth * y - this.height / 2 + this.cellWidth/2, 
+						  this.cellWidth * z - this.width / 2 + this.cellWidth/2);
 					box(this.cellWidth);
 					pop();
 				}
