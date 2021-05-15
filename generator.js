@@ -137,7 +137,7 @@ class cubeSpace
 					push();
 					translate(this.cellWidth * x - this.width / 2 + this.cellWidth/2, 
 						  -(this.cellWidth * y - this.height / 2 + this.cellWidth/2), 
-						  -(this.cellWidth * z - this.width / 2 + this.cellWidth/2) );
+						  this.cellWidth * z - this.width / 2 + this.cellWidth/2 );
 					box(this.cellWidth);
 					pop();
 				}
