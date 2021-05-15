@@ -54,15 +54,15 @@ class cubeSpace
 	set startPoint(pos)
 	{
 		let x=pos[0], y=pos[1], z=pos[2];
-		this.cell[x][y][z] = 2;
-		this.cell[this._startPoint[0]][this._startPoint[1]][this._startPoint[2]] = 0;
+		this.cells[x][y][z] = 2;
+		this.cells[this._startPoint[0]][this._startPoint[1]][this._startPoint[2]] = 0;
 		this._startPoint=[x,y,z];
 	}
 	set endPoint(pos)
 	{
 		let x=pos[0], y=pos[1], z=pos[2];
-		this.cell[x][y][z] = 3;
-		this.cell[this.endPoint[0]][this.endPoint[1]][this.endPoint[2]] = 0;
+		this.cells[x][y][z] = 3;
+		this.cells[this.endPoint[0]][this.endPoint[1]][this.endPoint[2]] = 0;
 		this.endPoint=[x,y,z];
 	}
 	reset()
