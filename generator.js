@@ -163,7 +163,7 @@ function setup()
 
 function draw()
 {
-	background(1);
+	background(220);
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
