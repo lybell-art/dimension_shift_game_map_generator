@@ -97,10 +97,10 @@ class cubeSpace
 		let x, z, dir;
 		switch(this.face)
 		{
-			case 2:x=_x; z=0; dir=1; break;
-			case 3:x=this.column-1; z=_x; dir=-1; break;
-			case 0:x=this.column-1-_x; z=this.column-1; dir=-1; break;
-			case 1:x=0; z=this.column-1-_x; dir=1; break;
+			case 0:x=_x; z=0; dir=1; break;
+			case 1:x=this.column-1; z=_x; dir=-1; break;
+			case 2:x=this.column-1-_x; z=this.column-1; dir=-1; break;
+			case 3:x=0; z=this.column-1-_x; dir=1; break;
 		}
 		
 		for(let i=0; i<Math.min(Math.floor(this.column/2),4); i++)
