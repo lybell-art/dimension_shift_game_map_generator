@@ -150,6 +150,7 @@ class cubeSpace
 function drawCursor(cur)
 {
 	let w=map.cellWidth;
+	console.log(cur[0]*w, cur[1]*w);
 	push();
 	stroke(255,0,0);
 	strokeWeight(5);
