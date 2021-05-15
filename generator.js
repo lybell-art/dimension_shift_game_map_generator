@@ -212,14 +212,3 @@ function keyPressed() {
 		map.rotate(1);
 	}
 }
-
-
-p5.RendererGL.prototype._initContext = function() {
-  this.drawingContext = false ||
-    this.canvas.getContext('webgl2', this.attributes) ||
-    this.canvas.getContext('webgl', this.attributes) ||
-    this.canvas.getContext('experimental-webgl', this.attributes);
-  let gl = this.drawingContext;
-  gl.enable(gl.BLEND);
-  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-};
