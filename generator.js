@@ -6,6 +6,10 @@ function cycle(n, p, c)
 	let v=n+p;
 	return v-Math.floor(v/c)*c;
 }
+function between(a, min, max)
+{
+	return min <= a && a<=max;
+}
 
 class cubeSpace
 {
@@ -87,6 +91,7 @@ class cubeSpace
 	}
 	add(_x, _y, mode=0)
 	{
+		if(!between(_x, 0, this.column-1) || !between(_y, 0, this.row-1)) return false;
 		let x, z, dir;
 		switch(this.face)
 		{
@@ -101,6 +106,7 @@ class cubeSpace
 			if(this.face % 2 == 1) z+=dir;
 			else x+=dir;
 		}
+		return true;
 	}
 	render()
 	{
