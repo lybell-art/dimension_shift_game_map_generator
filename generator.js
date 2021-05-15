@@ -87,8 +87,7 @@ class cubeSpace
 	{
 		let x = _x - this.leftBound;
 		let y = _y - this.upperBound;
-		console.log(x, y);
-		return [Math.floor(x/this.column), Math.floor(y/this.row)];
+		return [Math.floor(x/this.cellWidth), Math.floor(y/this.cellWidth)];
 	}
 	add(_x, _y, mode=0)
 	{
