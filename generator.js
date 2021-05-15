@@ -149,7 +149,7 @@ function setup()
 	map=new cubeSpace();
 	sliderW=createSlider(3,10,8);
 	sliderH=createSlider(3,10,8);
-	silderW.position(10,10);
+	sliderW.position(10,10);
 	sliderH.position(10,40);
 }
 
