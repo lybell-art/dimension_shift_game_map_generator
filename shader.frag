@@ -10,5 +10,5 @@ varying vec3 objPos;
 
 void main(void) {
 	gl_FragColor = isTexture ? texture2D(uSampler, vTexCoord) * (uTint / vec4(255, 255, 255, 255)) : uMaterialColor;
-	gl_FragColor.z = - objPos.z / 5.0;
+	gl_FragColor.z = - objPos.z / 50.0;
 }
