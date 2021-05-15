@@ -186,7 +186,6 @@ function draw()
 {
 	background(220);
 	orbitControl();
-	myShader.setUniform("base", slider_shader.value() * 1.0);
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
