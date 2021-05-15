@@ -87,7 +87,7 @@ class cubeSpace
 	{
 		let x = _x - this.leftBound;
 		let y = _y - this.upperBound;
-		return [x%this.column, y%this.row];
+		return [Math.floor(x/this.column), Math.floor(y/this.row)];
 	}
 	add(_x, _y, mode=0)
 	{
