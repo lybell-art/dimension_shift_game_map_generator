@@ -59,7 +59,7 @@ class cubeSpace
 				this.cells[x].push([]);
 				for(let z=0;z<10;z++)
 				{
-					this.cells[x][y].push(0);
+					this.cells[x][y].push(1);
 				}
 			}
 		}
