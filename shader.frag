@@ -12,5 +12,5 @@ uniform float base;
 
 void main(void) {
 	gl_FragColor = isTexture ? texture2D(uSampler, vTexCoord) * (uTint / vec4(255, 255, 255, 255)) : uMaterialColor;
-	gl_FragColor.z = objPos.z > base ? 1.0 : 0.5; // z-0 is -800  (objPos.z + base) / 200.0
+	gl_FragColor.a = objPos.z > base ? 1.0 : (objPos.z - base) / 400.0 + 0.25; // z-0 is -800  (objPos.z + base) / 200.0
 }
