@@ -1,5 +1,5 @@
 let map, sliderW, sliderH;
-let mode=1;
+let mode=1, myShader;
 
 function cycle(n, p, c)
 {
@@ -121,6 +121,7 @@ class cubeSpace
 		strokeWeight(3);
 		box(this.width, this.height, this.width);
 		strokeWeight(1);
+		shader(myShader);
 		for(let x=0; x<this.column; x++)
 		{
 			for(let y=0;y<this.row;y++)
@@ -143,6 +144,7 @@ class cubeSpace
 				}
 			}
 		}
+		resetShader();
 		pop();
 	}
 }
@@ -159,6 +161,11 @@ function drawCursor(cur)
 	rect(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2) - w, w, w);
 	pop();
 	return true;
+}
+
+function preload()
+{
+	myShader = loadShader("shader.vert", "shader.frag");
 }
 
 function setup()
