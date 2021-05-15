@@ -152,7 +152,8 @@ function drawCursor(cur)
 	let w=map.cellWidth;
 	push();
 	stroke(255,0,0);
-	strokeWeight(3);
+	strokeWeight(5);
+	noFill();
 	translate(0,0,-900);
 	rect(cur[0] * w, cur[1] * w, w, w);
 	pop();
