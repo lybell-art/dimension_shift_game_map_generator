@@ -172,9 +172,20 @@ function draw()
 }
 
 function mousePressed() {
-	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
-	let _type;
-	if(mouseButton === LEFT) _type=mode;
-	else if(mouseButton === RIGHT) _type=0;
-	map.add(cur[0], cur[1], _type);
+	if(map.rotateDir == 0)
+	{
+		let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
+		let _type;
+		if(mouseButton === LEFT) _type=mode;
+		else if(mouseButton === RIGHT) _type=0;
+		map.add(cur[0], cur[1], _type);
+	}
+}
+
+function keyPressed() {
+	if (keyCode === LEFT_ARROW) {
+		map.rotate(-1);
+	} else if (keyCode === RIGHT_ARROW) {
+		map.rotate(1);
+	}
 }
