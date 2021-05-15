@@ -149,6 +149,7 @@ class cubeSpace
 
 function drawCursor(cur)
 {
+	if(!between(cur[0], 0, map.column-1) || !between(cur[1], 0, map.row-1)) return false;
 	let w=map.cellWidth;
 	push();
 	stroke(255,0,0);
@@ -157,6 +158,7 @@ function drawCursor(cur)
 	translate(0,0,900);
 	rect(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2) - w, w, w);
 	pop();
+	return true;
 }
 
 function setup()
