@@ -150,13 +150,13 @@ class cubeSpace
 function drawCursor(cur)
 {
 	let w=map.cellWidth;
-	console.log(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2));
+	console.log(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2) + w);
 	push();
 	stroke(255,0,0);
 	strokeWeight(5);
 	noFill();
 	translate(0,0,900);
-	rect(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2), w, w);
+	rect(cur[0] * w - map.width/2, -(cur[1] * w -map.height/2) + w, w, w);
 	pop();
 }
 
@@ -174,7 +174,6 @@ function setup()
 function draw()
 {
 	background(220);
-	orbitControl();
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
