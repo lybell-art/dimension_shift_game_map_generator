@@ -91,6 +91,10 @@ class cubeSpace
 		let y = _y - this.upperBound;
 		return [Math.floor(x/this.cellWidth), Math.floor(y/this.cellWidth)];
 	}
+	isStartEndPoint(mode)
+	{
+		return mode == 2 || mode == 3;
+	}
 	add(_x, _y, mode=0)
 	{
 		if(!between(_x, 0, this.column-1) || !between(_y, 0, this.row-1)) return false;
@@ -103,13 +107,24 @@ class cubeSpace
 			case 3:x=this.column-1; z=this.column-1-_x; dir=-1; break;
 		}
 		
+		let xx=x, zz=z, sePoint=false;
 		for(let i=0; i<Math.min(Math.floor(this.column/2),4); i++)
 		{
-			console.log(x, _y, z);
-			this.cells[x][_y][z] = mode;
+			if(!this.isStartEndPoint(mode)) this.cells[x][_y][z] = mode;
+			else if(_y+1 < this.column) // start & end point
+			{
+				let bottom=this.cells[x][_y+1][z];
+				if(bottom != 0 && !this.isStartEndPoint(bottom))
+				{
+					this.cells[x][_y][z] = mode;
+					sePoint=true;
+					break;
+				}
+			}
 			if(this.face % 2 == 0) z+=dir;
 			else x+=dir;
 		}
+		if(!sePoint && this.isStartEndPoint(mode)) this.cells[xx][_y][zz] = mode;
 		return true;
 	}
 	render()
@@ -128,8 +143,9 @@ class cubeSpace
 			{
 				for(let z=0;z<this.column;z++)
 				{
-					if(this.cells[x][y][z] == 0) continue;
-					switch(this.cells[x][y][z])
+					let currentCell=this.cells[x][y][z];
+					if(currentCell == 0) continue;
+					switch(currentCell)
 					{
 						case 1:fill(255); break;
 						case 2:fill(0,255,0); break;
@@ -139,7 +155,8 @@ class cubeSpace
 					translate(this.cellWidth * x - this.width / 2 + this.cellWidth/2, 
 						  -(this.cellWidth * y - this.height / 2 + this.cellWidth/2), 
 						  this.cellWidth * z - this.width / 2 + this.cellWidth/2 );
-					box(this.cellWidth);
+					if( this.isStartEndPoint(currentCell) ) sphere(this.cellWidth / 3);
+					else box(this.cellWidth);
 					pop();
 				}
 			}
@@ -186,7 +203,6 @@ function setup()
 function draw()
 {
 	background(220);
-	orbitControl();
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
@@ -212,6 +228,9 @@ function keyPressed() {
 	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(1);
 	}
+	else if (keyCode == 49) mode = 1;
+	else if (keyCode == 50) mode = 2;
+	else if (keyCode == 51) mode = 3;
 }
 
 function exportData()
