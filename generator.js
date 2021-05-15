@@ -23,8 +23,8 @@ class cubeSpace
 		this.r = 0;
 		this.nextFace= 0;
 		this.rotateDir = 0;
-		this._startPoint = [0,0,0];
-		this._endPoint = [7,7,0];
+		this._startPoint = [0,0,7];
+		this._endPoint = [7,7,7];
 		this.reset();
 	}
 	get width()
@@ -79,8 +79,8 @@ class cubeSpace
 				}
 			}
 		}
-		this.startPoint=[0,0,0];
-		this.endPoint=[7,7,0];
+		this.startPoint=[0,0,7];
+		this.endPoint=[7,7,7];
 	}
 	rotate(direction)
 	{
