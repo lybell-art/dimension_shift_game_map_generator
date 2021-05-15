@@ -5,10 +5,8 @@ uniform vec4 uTint;
 uniform sampler2D uSampler;
 uniform bool isTexture;
 
-varying highp vec2 vVertTexCoord;
-varying vec3 vDiffuseColor;
-varying vec3 vSpecularColor;
+varying vec2 vTexCoord;
 
 void main(void) {
-  gl_FragColor = isTexture ? texture2D(uSampler, vVertTexCoord) * (uTint / vec4(255, 255, 255, 255)) : uMaterialColor;
+  gl_FragColor = isTexture ? texture2D(uSampler, vTexCoord) * (uTint / vec4(255, 255, 255, 255)) : uMaterialColor;
 }
