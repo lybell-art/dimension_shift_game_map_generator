@@ -103,7 +103,7 @@ class cubeSpace
 			case 3:x=0; z=this.column-1-_x; dir=1; break;
 		}
 		
-		for(let i=0; i<Math.max(Math.floor(this.column/2),4); i++)
+		for(let i=0; i<Math.min(Math.floor(this.column/2),4); i++)
 		{
 			console.log(x, _y, z);
 			this.cells[x][_y][z] = mode;
