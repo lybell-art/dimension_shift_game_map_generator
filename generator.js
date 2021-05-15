@@ -1,4 +1,4 @@
-let map, sliderW, sliderH, slider_shader;
+let map, sliderW, sliderH, saveButton;
 let mode=1, myShader;
 
 function cycle(n, p, c)
@@ -178,8 +178,9 @@ function setup()
 	sliderW.position(10,10);
 	sliderH.position(10,40);
 	
-	slider_shader=createSlider(-1200,-600,-800);
-	slider_shader.position(10,70);
+	saveButton=createButton('export');
+	saveButton.position(10, 70);
+	saveButton.mousePressed(exportData);
 }
 
 function draw()
@@ -211,4 +212,14 @@ function keyPressed() {
 	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(1);
 	}
+}
+
+function exportData()
+{
+	let data={};
+	data.level = 0;
+	data.row = map.row;
+	data.column = map.column;
+	data.cells=map.cells;
+	saveJSON(data, 'map.json');
 }
