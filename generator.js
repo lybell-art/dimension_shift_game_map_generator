@@ -68,6 +68,7 @@ class cubeSpace
 	}
 	reset()
 	{
+		this.cells=[];
 		for(let x=0; x<10; x++)
 		{
 			this.cells.push([]);
