@@ -267,7 +267,8 @@ function drawUI()
 	push();
 	texture(uiLayer);
 	translate(0,0,900);
-	rect(width/2 - 50,0,50,80);
+	rotateX(PI);
+	rect(width/2 - 50,-height/2,50,80);
 	pop();
 }
 
