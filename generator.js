@@ -172,7 +172,7 @@ class cubeSpace
 					let cell=this.cells[xx][j][zz];
 					if(cell !== 0 && !this.isStartEndPoint(cell))
 					{
-						res[i][j]=cell;
+						res[j][i]=cell;
 						break;
 					}
 					zz+=depthDir;
