@@ -148,6 +148,39 @@ class cubeSpace
 		}
 		return true;
 	}
+	getBound(_face=null)
+	{
+		let face = face===null ? this.face : _face;
+		let x, z, slideDir, depthDir;
+		switch(face)
+		{
+			case 0:x=0; z=this.column-1; slideDir=1; depthDir=-1; break;
+			case 1:x=0; z=0; slideDir=1; depthDir=1; break;
+			case 2:x=this.column-1; z=0; slideDir=-1 depthDir=1; break;
+			case 3:x=this.column-1; z=this.column-1; slideDir=-1; depthDir=-1; break;
+		}
+		let res=[], xx=(face % 2 == 0)?x:z, zz;
+		for(let i=0; i<this.column; i++)
+		{
+			res.push([]);
+			for(let j=0; j<this.row; j++)	
+			{
+				zz=(face % 2 == 0)?z:x;
+				for(let k=0; k<Math.floor(this.column/2); k++)
+				{
+					let cell=this.cells[xx][j][zz];
+					if(cell !== 0 && !this.isStartEndPoint(cell))
+					{
+						res.push(cell);
+						break;
+					}
+					zz+=depthDir;
+				}
+			}
+			xx+=slideDir;
+		}
+		return res;
+	}
 	render()
 	{
 		push();
