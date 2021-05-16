@@ -265,6 +265,7 @@ function drawUI()
 	}
 	uiLayer.text(str, 25, 65);
 	push();
+	noStroke();
 	texture(uiLayer);
 	translate(0,0,900);
 	rotateX(PI);
