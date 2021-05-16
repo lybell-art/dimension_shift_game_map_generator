@@ -348,9 +348,9 @@ function mousePressed() {
 
 function keyPressed() {
 	if (keyCode === LEFT_ARROW) {
-		map.rotate(-1);
-	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(1);
+	} else if (keyCode === RIGHT_ARROW) {
+		map.rotate(-1);
 	}
 	else if (between(keyCode, 49, 53)) mode = keyCode - 48; //1~5
 }
