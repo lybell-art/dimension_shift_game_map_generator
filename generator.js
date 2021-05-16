@@ -205,6 +205,8 @@ class cubeSpace
 						case 1:fill(255); break;
 						case 2:fill(0,255,0); break;
 						case 3:fill(255,255,0); break;
+						case 4:fill("#a18d6c"); break;
+						case 5:fill("#42a3ed"); break;
 					}
 					push();
 					translate(this.cellWidth * x - this.width / 2 + this.cellWidth/2, 
@@ -235,6 +237,38 @@ function drawCursor(cur)
 	return true;
 }
 
+function drawUI()
+{
+	push();
+	translate(0,0,900);
+	noStroke();
+	fill(255);
+	rect(width-50, 0, 50, 80, 0, 0, 0, 15);
+	stroke(25);
+	switch(mode)
+	{
+		case 1:fill(255); break;
+		case 2:fill(0,255,0); break;
+		case 3:fill(255,255,0); break;
+		case 4:fill("#a18d6c"); break;
+		case 5:fill("#42a3ed"); break;
+	}
+	rect(width-5, 5, 40, 40);
+	noStroke();
+	fill(25);
+	let str;
+	switch(mode)
+	{
+		case 1:str="Wall"; break;
+		case 2:str="Start"; break;
+		case 3:str="Goal"; break;
+		case 4:str="Pond"; break;
+		case 5:str="Sand"; break;
+	}
+	text(str, width-25, 65);
+	pop();
+}
+
 function preload()
 {
 	myShader = loadShader("shader.vert", "shader.frag");
@@ -257,6 +291,7 @@ function setup()
 	resetButton=createButton('reset');
 	resetButton.position(10, 100);
 	resetButton.mousePressed(map.reset);
+	textAlign(CENTER, CENTER);
 }
 
 function draw()
@@ -268,6 +303,7 @@ function draw()
 	drawCursor(cur);
 	map.operate();
 	map.render();
+	drawUI();
 }
 
 function mousePressed() {
@@ -287,9 +323,7 @@ function keyPressed() {
 	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(1);
 	}
-	else if (keyCode == 49) mode = 1;
-	else if (keyCode == 50) mode = 2;
-	else if (keyCode == 51) mode = 3;
+	else if (between(keyCode, 49, 53)) mode = keyCode - 48; //1~5
 }
 
 function exportData()
