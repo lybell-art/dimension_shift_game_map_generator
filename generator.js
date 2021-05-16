@@ -254,18 +254,6 @@ function drawUI()
 		case 5:fill("#42a3ed"); break;
 	}
 	rect(width-5, 5, 40, 40);
-	noStroke();
-	fill(25);
-	let str;
-	switch(mode)
-	{
-		case 1:str="Wall"; break;
-		case 2:str="Start"; break;
-		case 3:str="Goal"; break;
-		case 4:str="Pond"; break;
-		case 5:str="Sand"; break;
-	}
-	text(str, width-25, 65);
 	pop();
 }
 
@@ -292,7 +280,6 @@ function setup()
 	resetButton.position(10, 100);
 	resetButton.mousePressed(map.reset);
 	textAlign(CENTER, CENTER);
-	textFont('Helvetica');
 }
 
 function draw()
