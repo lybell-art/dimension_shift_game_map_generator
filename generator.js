@@ -298,7 +298,7 @@ function setup()
 	resetButton=createButton('reset');
 	resetButton.position(10, 100);
 	resetButton.mousePressed(function(){map.reset();});
-	uiLayer = createGraphics(50, 80);
+	uiLayer = createGraphics(100, 160);
 	uiLayer.textAlign(CENTER, CENTER);
 }
 
