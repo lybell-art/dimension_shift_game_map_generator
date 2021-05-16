@@ -156,7 +156,7 @@ class cubeSpace
 		{
 			case 0:x=0; z=this.column-1; slideDir=1; depthDir=-1; break;
 			case 1:x=0; z=0; slideDir=1; depthDir=1; break;
-			case 2:x=this.column-1; z=0; slideDir=-1 depthDir=1; break;
+			case 2:x=this.column-1; z=0; slideDir=-1; depthDir=1; break;
 			case 3:x=this.column-1; z=this.column-1; slideDir=-1; depthDir=-1; break;
 		}
 		let res=[], xx=(face % 2 == 0)?x:z, zz;
