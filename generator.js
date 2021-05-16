@@ -81,8 +81,8 @@ class cubeSpace
 				}
 			}
 		}
-		this.startPoint=[0,0,7];
-		this.endPoint=[7,7,7];
+		this.startPoint=[0,0,this.column-1];
+		this.endPoint=[this.column-1,this.row-1,this.column-1];
 	}
 	rotate(direction)
 	{
