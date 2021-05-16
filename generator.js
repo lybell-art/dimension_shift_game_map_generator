@@ -253,6 +253,10 @@ function setup()
 	saveButton=createButton('export');
 	saveButton.position(10, 70);
 	saveButton.mousePressed(exportData);
+	
+	resetButton=createButton('reset');
+	resetButton.position(10, 100);
+	resetButton.mousePressed(map.reset);
 }
 
 function draw()
