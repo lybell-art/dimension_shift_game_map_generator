@@ -292,6 +292,7 @@ function setup()
 	resetButton.position(10, 100);
 	resetButton.mousePressed(map.reset);
 	textAlign(CENTER, CENTER);
+	textFont('Helvetica');
 }
 
 function draw()
