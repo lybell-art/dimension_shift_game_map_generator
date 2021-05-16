@@ -278,7 +278,7 @@ function setup()
 	
 	resetButton=createButton('reset');
 	resetButton.position(10, 100);
-	resetButton.mousePressed(map.reset);
+	resetButton.mousePressed(function(){map.reset();});
 	textAlign(CENTER, CENTER);
 }
 
