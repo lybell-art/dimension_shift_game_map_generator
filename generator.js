@@ -150,10 +150,12 @@ class cubeSpace
 		}
 		return true;
 	}
+	//get bounding box
 	getBound(_face=null)
 	{
 		let face = _face===null ? this.face : _face;
 		let x, z, slideDir, depthDir;
+		//get starting point
 		switch(face)
 		{
 			case 0:x=0; z=this.column-1; slideDir=1; depthDir=-1; break;
@@ -161,17 +163,24 @@ class cubeSpace
 			case 2:x=this.column-1; z=0; slideDir=-1; depthDir=1; break;
 			case 3:x=this.column-1; z=this.column-1; slideDir=-1; depthDir=-1; break;
 		}
+		
+		//현재 바라보는 위치의 왼쪽 위부터 스캔합니다.
 		let res=[], xx=(face % 2 == 0)?x:z, zz;
-		for(let i=0; i<this.row; i++)
+		for(let i=0;i<this.row;i++)
 		{
 			res.push([]);
-			for(let j=0; j<this.column; j++)	
+			for(let j=0;j<this.column;j++) res[i].push(0);
+		}
+		
+		let startX=-1, startY=-1;
+		for(let i=0; i<this.column; i++)
+		{
+			for(let j=0; j<this.row; j++)	
 			{
-				res[i].push(0);
 				zz=(face % 2 == 0)?z:x;
-				for(let k=0; k<Math.floor(this.column/2); k++)
+				for(let k=0; k<Math.ceil(this.column/2); k++)
 				{
-					let cell=this.cells[xx][j][zz];
+					let cell=(face % 2 == 0) ? this.cells[xx][j][zz] : this.cells[zz][j][xx];
 					if(cell !== 0 && !this.isStartEndPoint(cell))
 					{
 						res[j][i]=cell;
@@ -184,6 +193,18 @@ class cubeSpace
 		}
 		return res;
 	}
+	getStartPoint()
+	{
+		let _x, _y, _facing;
+		if(this._startPoint[2] > Math.floor(this.column/2) ) _facing=0;
+		else _facing=2;
+		_x=(_facing == 0) : this._startPoint[0] : this.column - 1 - this._startPoint[0];
+		_y=this._startPoint[1];
+		_x = _x * this.cellWidth - this.width / 2 + this.cellWidth/2;
+		_y = _y * this.cellWidth - this.height / 2 + this.cellWidth/2;
+		return {x:_x, y:_y, facing:_facing};
+	}
+	
 	render()
 	{
 		push();
@@ -341,6 +362,10 @@ function exportData()
 	data.row = map.row;
 	data.column = map.column;
 	data.cells=map.cells.slice(0,map.column);
+	let startPointData=map.getStartPoint();
+	data.startX=startPointData.x;
+	data.startY=startPointData.y;
+	data.facing=startPointData.faceing;
 	for(let i=0;i<map.column;i++)
 	{
 		data.cells[i].splice(map.row);
