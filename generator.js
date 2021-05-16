@@ -244,7 +244,7 @@ function drawUI()
 	uiLayer.clear();
 	uiLayer.noStroke();
 	uiLayer.fill(255);
-	uiLayer.rect(0, 0, 50, 80, 0, 0, 0, 15);
+	uiLayer.rect(0, 0, 100, 160, 0, 0, 0, 30);
 	uiLayer.stroke(25);
 	switch(mode)
 	{
@@ -254,7 +254,7 @@ function drawUI()
 		case 4:uiLayer.fill("#a18d6c"); break;
 		case 5:uiLayer.fill("#42a3ed"); break;
 	}
-	uiLayer.rect(5, 5, 40, 40);
+	uiLayer.rect(10, 10, 80, 80);
 	let str;
 	switch(mode)
 	{
@@ -266,13 +266,13 @@ function drawUI()
 	}
 	uiLayer.noStroke();
 	uiLayer.fill(0);
-	uiLayer.text(str, 25, 65);
+	uiLayer.text(str, 50, 130);
 	push();
 	noStroke();
 	texture(uiLayer);
 	translate(0,0,900);
 	rotateX(PI);
-	rect(width/2 - 50,-height/2,50,80);
+	rect(width/2 - 100,-height/2,100,160);
 	pop();
 }
 
