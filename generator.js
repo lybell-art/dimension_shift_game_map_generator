@@ -361,11 +361,12 @@ function exportData()
 	data.level = 0;
 	data.row = map.row;
 	data.column = map.column;
-	data.cells=map.cells.slice(0,map.column);
 	let startPointData=map.getStartPoint();
 	data.startX=startPointData.x;
 	data.startY=startPointData.y;
-	data.facing=startPointData.faceing;
+	data.facing=startPointData.facing;
+	
+	data.cells=map.cells.slice(0,map.column);
 	for(let i=0;i<map.column;i++)
 	{
 		data.cells[i].splice(map.row);
