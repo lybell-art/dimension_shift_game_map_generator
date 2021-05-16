@@ -150,7 +150,7 @@ class cubeSpace
 	}
 	getBound(_face=null)
 	{
-		let face = face===null ? this.face : _face;
+		let face = _face===null ? this.face : _face;
 		let x, z, slideDir, depthDir;
 		switch(face)
 		{
