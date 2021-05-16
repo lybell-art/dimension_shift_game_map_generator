@@ -160,10 +160,10 @@ class cubeSpace
 			case 3:x=this.column-1; z=this.column-1; slideDir=-1; depthDir=-1; break;
 		}
 		let res=[], xx=(face % 2 == 0)?x:z, zz;
-		for(let i=0; i<this.column; i++)
+		for(let i=0; i<this.row; i++)
 		{
 			res.push([]);
-			for(let j=0; j<this.row; j++)	
+			for(let j=0; j<this.column; j++)	
 			{
 				res[i].push(0);
 				zz=(face % 2 == 0)?z:x;
