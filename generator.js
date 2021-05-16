@@ -253,7 +253,7 @@ function drawUI()
 		case 4:fill("#a18d6c"); break;
 		case 5:fill("#42a3ed"); break;
 	}
-	rect(width-5, 5, 40, 40);
+	rect(width-45, 5, 40, 40);
 	pop();
 }
 
@@ -285,6 +285,7 @@ function setup()
 function draw()
 {
 	background(220);
+	orbitControl();
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
