@@ -165,13 +165,14 @@ class cubeSpace
 			res.push([]);
 			for(let j=0; j<this.row; j++)	
 			{
+				res[i].push(0);
 				zz=(face % 2 == 0)?z:x;
 				for(let k=0; k<Math.floor(this.column/2); k++)
 				{
 					let cell=this.cells[xx][j][zz];
 					if(cell !== 0 && !this.isStartEndPoint(cell))
 					{
-						res[i].push(cell);
+						res[i][j]=cell;
 						break;
 					}
 					zz+=depthDir;
