@@ -1,5 +1,6 @@
 let map, sliderW, sliderH, saveButton;
 let mode=1, myShader;
+let uiLayer;
 
 function cycle(n, p, c)
 {
@@ -239,21 +240,34 @@ function drawCursor(cur)
 
 function drawUI()
 {
-	push();
-	translate(0,0,900);
-	noStroke();
-	fill(255);
-	rect(width-50, 0, 50, 80, 0, 0, 0, 15);
-	stroke(25);
+	uiLayer.clear();
+	uiLayer.noStroke();
+	uiLayer.fill(255);
+	uiLayer.rect(0, 0, 50, 80, 0, 0, 0, 15);
+	uiLayer.stroke(25);
 	switch(mode)
 	{
-		case 1:fill(255); break;
-		case 2:fill(0,255,0); break;
-		case 3:fill(255,255,0); break;
-		case 4:fill("#a18d6c"); break;
-		case 5:fill("#42a3ed"); break;
+		case 1:uiLayer.fill(255); break;
+		case 2:uiLayer.fill(0,255,0); break;
+		case 3:uiLayer.fill(255,255,0); break;
+		case 4:uiLayer.fill("#a18d6c"); break;
+		case 5:uiLayer.fill("#42a3ed"); break;
 	}
-	rect(width-45, 5, 40, 40);
+	uiLayer.rect(5, 5, 40, 40);
+	let str;
+	switch(mode)
+	{
+		case 1:str="Wall"; break;
+		case 2:str="Start"; break;
+		case 3:str="Goal"; break;
+		case 4:str="Sand"; break;
+		case 5:str="Pond"; break;
+	}
+	uiLayer.text(str, 25, 65);
+	push();
+	texture(uiLayer);
+	translate(0,0,900);
+	rect(width/2 - 50,0,50,80);
 	pop();
 }
 
@@ -279,7 +293,8 @@ function setup()
 	resetButton=createButton('reset');
 	resetButton.position(10, 100);
 	resetButton.mousePressed(function(){map.reset();});
-	textAlign(CENTER, CENTER);
+	uiLayer = createGraphics(50, 80);
+	uiLayer.textAlign(CENTER, CENTER);
 }
 
 function draw()
