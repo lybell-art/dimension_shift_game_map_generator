@@ -264,6 +264,8 @@ function drawUI()
 		case 4:str="Sand"; break;
 		case 5:str="Pond"; break;
 	}
+	uiLayer.noStroke();
+	uiLayer.fill(0);
 	uiLayer.text(str, 25, 65);
 	push();
 	noStroke();
@@ -303,7 +305,6 @@ function setup()
 function draw()
 {
 	background(220);
-	orbitControl();
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
