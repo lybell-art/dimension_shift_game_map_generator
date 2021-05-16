@@ -293,6 +293,14 @@ function exportData()
 	data.level = 0;
 	data.row = map.row;
 	data.column = map.column;
-	data.cells=map.cells;
+	data.cells=map.cells.slice(0,map.column);
+	for(let i=0;i<map.column;i++)
+	{
+		data.cells[i].splice(map.row);
+		for(let j=0;j<map.row;j++)
+		{
+			data.cells[i][j].splice(map.column);
+		}
+	}
 	saveJSON(data, 'map.json');
 }
