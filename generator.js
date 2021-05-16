@@ -200,8 +200,6 @@ class cubeSpace
 		else _facing=2;
 		_x=(_facing == 0) ? this._startPoint[0] : this.column - 1 - this._startPoint[0];
 		_y=this._startPoint[1];
-		_x = _x * this.cellWidth - this.width / 2 + this.cellWidth/2;
-		_y = _y * this.cellWidth - this.height / 2 + this.cellWidth - 5;
 		return {x:_x, y:_y, facing:_facing};
 	}
 	
