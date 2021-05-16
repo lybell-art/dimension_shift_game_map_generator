@@ -16,8 +16,8 @@ class cubeSpace
 {
 	constructor()
 	{
-		this.row=10; // number Y
-		this.column=10; // number X
+		this.row=8; // number Y
+		this.column=8; // number X
 		this.cellWidth=50;
 		this.cells=[];
 		this.face = 0;
