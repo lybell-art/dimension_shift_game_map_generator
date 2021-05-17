@@ -170,7 +170,7 @@ class cubeSpace
 			if(mode == 2) this.startPoint=[xx,_y,zz];
 			else this.endPoint=[xx,_y,zz];
 		}
-		if(!this.isStartEndPoint(mode))
+		if(sculptMode && !this.isStartEndPoint(mode))
 		{
 			if(mode !=0) this.cells[sculptPoint[0]][sculptPoint[1]][sculptPoint[2]] = mode;
 		}
