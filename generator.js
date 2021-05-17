@@ -172,8 +172,7 @@ class cubeSpace
 		}
 		if(!this.isStartEndPoint(mode))
 		{
-			if(!this.sculpting) this.cells[xx][_y][zz] = mode;
-			else if(mode !=0) this.cells[sculptPoint[0]][sculptPoint[1]][sculptPoint[2]] = mode;
+			if(mode !=0) this.cells[sculptPoint[0]][sculptPoint[1]][sculptPoint[2]] = mode;
 		}
 		return true;
 	}
