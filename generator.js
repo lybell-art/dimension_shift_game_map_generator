@@ -1,5 +1,5 @@
 let map, sliderW, sliderH, saveButton;
-let mode=1, myShader;
+let mode=1, sculptMode=false, myShader;
 let uiLayer;
 
 function cycle(n, p, c)
@@ -125,10 +125,32 @@ class cubeSpace
 			case 3:x=this.column-1; z=this.column-1-_x; dir=-1; break;
 		}
 		
-		let xx=x, zz=z, sePoint=false;
+		let xx=x, zz=z, sePoint=false, sculpting=false, sculptPoint;
 		for(let i=0; i<Math.min(Math.floor(this.column/2),4); i++)
 		{
-			if(!this.isStartEndPoint(mode)) this.cells[x][_y][z] = mode;
+			if(!this.isStartEndPoint(mode))
+			{
+				if(sculptMode)
+				{
+					let current = this.cells[x][_y][z];
+					if(mode == 0 && current != 0)
+					{
+						this.cells[x][_y][z] = mode;
+						sculpting=true;
+						break;
+					}
+					else if(mode != 0)
+					{
+						if(!sculpting) 
+						{
+							if(current != 0) sculpting=true;
+							if(current == 0 || i == 0) sculptPoint = [x,_y,z];
+						}
+					}
+					if(sculpting) break;
+				}
+				else this.cells[x][_y][z] = mode;
+			}
 			else if(_y+1 < this.column) // start & end point
 			{
 				let bottom=this.cells[x][_y+1][z];
@@ -147,6 +169,11 @@ class cubeSpace
 		{
 			if(mode == 2) this.startPoint=[xx,_y,zz];
 			else this.endPoint=[xx,_y,zz];
+		}
+		if(!this.isStartEndPoint(mode))
+		{
+			if(!this.sculpting) this.cells[xx][_y][zz] = mode;
+			else if(mode !=0) this.cells[sculptPoint[0]][sculptPoint[1]][sculptPoint[2]] = mode;
 		}
 		return true;
 	}
@@ -324,6 +351,7 @@ function setup()
 function draw()
 {
 	background(220);
+	orbitControl();
 	map.column = sliderW.value();
 	map.row = sliderH.value();
 	let cur=map.getGrid(mouseX-width/2, mouseY-height/2);
@@ -350,6 +378,7 @@ function keyPressed() {
 	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(-1);
 	}
+	else if (keyCode == 830) sculptMode = !sculptMode;
 	else if (between(keyCode, 49, 53)) mode = keyCode - 48; //1~5
 }
 
