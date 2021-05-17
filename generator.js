@@ -378,7 +378,7 @@ function keyPressed() {
 	} else if (keyCode === RIGHT_ARROW) {
 		map.rotate(-1);
 	}
-	else if (keyCode == 830) sculptMode = !sculptMode;
+	else if (keyCode == 83) sculptMode = !sculptMode;
 	else if (between(keyCode, 49, 53)) mode = keyCode - 48; //1~5
 }
 
